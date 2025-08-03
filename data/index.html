@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WiFi Config</title>
+  <script src="jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h2>WiFi Setup</h2>
+  <form id="wifi-form">
+    SSID: <input type="text" id="ssid" name="ssid"><br><br>
+    Password: <input type="password" id="password" name="password"><br><br>
+    <button type="submit">Connect</button>
+  </form>
+
+  <script>
+    $('#wifi-form').submit(function(e) {
+      e.preventDefault();
+      const ssid = $('#ssid').val();
+      const password = $('#password').val();
+      $.post("/connect", { ssid, password }, function(response) {
+        alert(response);
+      });
+    });
+  </script>
+</body>
+</html>
